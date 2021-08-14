@@ -6,6 +6,7 @@ import { Employee } from "../models/employee";
 export default class EmployeeStroe{
 
     employeeRegistry:Employee[] = [];
+    selectedEmployee:Employee|undefined= undefined;
     loadingInitial = false;
     searchReslutText:string|undefined = undefined;
     constructor(){
@@ -75,5 +76,30 @@ export default class EmployeeStroe{
        
         }
        
+    }
+
+    loadSelectedEmployee = async(id:string) =>{
+        this.loadingInitial = true;
+        runInAction(()=> this.selectedEmployee = undefined);
+        try{
+            await agent.Emp.details(id).then(response =>{
+                runInAction(()=>{
+                    this.selectedEmployee = response;
+                    this.loadingInitial= false;
+                });
+            });
+
+        }
+        catch(error){
+            runInAction(()=>{
+                this.loadingInitial = false;
+                console.log(error);
+            })
+        }
+
+    }
+
+    get getSelectedEmploye (){
+        return this.selectedEmployee;
     }
 }
