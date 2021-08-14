@@ -1,9 +1,14 @@
 import React from 'react';
+import { Container } from 'semantic-ui-react';
+import EmployeeListMain from '../../features/employee/employeeList/EmployeeListMain';
 import './style.css';
 
 function App() {
   return (
-    <div> Basic setup</div>
+    <Container className = 'main-container'>
+          <EmployeeListMain />
+    </Container>
+    
   );
 }
 

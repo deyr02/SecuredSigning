@@ -51,7 +51,7 @@ const requests = {
     del:<T>(url:string) => axios.delete<T>(url).then(responseBody)
 }
 
-const Employee = {
+const Emp = {
     list: () => requests.get<Employee[]>('/employee'),
     details: (id: string)=> requests.get<Employee>(`/employee/${id}`),
     create: (employee: {}) => requests.post<void>('/employee', employee),
@@ -59,5 +59,5 @@ const Employee = {
     delete:(id:string) => requests.del<void>(`employee/${id}`)
 }
 
-const agent = {Employee}
+const agent ={Emp}
 export default agent;
