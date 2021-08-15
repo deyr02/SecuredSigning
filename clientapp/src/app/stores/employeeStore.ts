@@ -99,7 +99,29 @@ export default class EmployeeStroe{
 
     }
 
-    get getSelectedEmploye (){
+    get getSelectedEmployee (){
         return this.selectedEmployee;
+    }
+
+
+     createEmployee = async (emp:Employee) => {
+        try {
+            await agent.Emp.create(emp);
+            runInAction(() => {
+                this.selectedEmployee = emp;
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+     updateEmployee = async (emp:Employee) => {
+        try {
+            await agent.Emp.update(emp);
+            runInAction(() => {
+                this.selectedEmployee = emp;
+            })
+        } catch (error) {
+            console.log(error);
+        }
     }
 }

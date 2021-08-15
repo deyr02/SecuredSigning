@@ -19,7 +19,7 @@ export default observer( function EmployeeDetailComponent(){
     return(
         <>
         {employeeStore.loadingInitial? (<LoadingComponent/>):
-        (employeeStore.getSelectedEmploye?.id === undefined? (<NotFound/>):(
+        (employeeStore.getSelectedEmployee?.id === undefined? (<NotFound/>):(
             <Segment clearing>
                         <Header className="detail-header" textAlign='center' size='huge'  dividing> <Icon name='user' /> User Details</Header>
 
