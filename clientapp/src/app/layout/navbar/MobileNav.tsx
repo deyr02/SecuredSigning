@@ -18,8 +18,8 @@ export default observer( function MobileNav(){
                 </Container>
             </Menu>
             {
-              employeeStore.isMenuvisible && ( <Container className= "mobile-nav-expand">
-                    <NavOptions></NavOptions>
+              employeeStore.isMenuvisible && ( <Container  className= "mobile-nav-expand">
+                    <NavOptions hideMenuOption={employeeStore.toggleMenuOption}></NavOptions>
                 </Container>)
             }
           

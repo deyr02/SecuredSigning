@@ -2,13 +2,17 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { List } from 'semantic-ui-react';
 
-export default function NavOptions(){
+interface Props{
+ hideMenuOption?:()=> void
+}
+
+export default function NavOptions({hideMenuOption}:Props){
     return (
         <List size= "large" link>
-            <List.Item as ={Link} to = {'/'} active >Home</List.Item>
-            <List.Item as ={Link} to = {'/employee'} active >Employee</List.Item>
-            <List.Item as ={Link} to = {'/create'} active >Create Employee</List.Item>
-            <List.Item as ={Link} to = {'/about'} active >About</List.Item>
+            <List.Item as ={Link} to = {'/'} active onClick={hideMenuOption} >Home</List.Item>
+            <List.Item as ={Link} to = {'/employee'} onClick={hideMenuOption} >Employee</List.Item>
+            <List.Item as ={Link} to = {'/create'} onClick={hideMenuOption} >Create Employee</List.Item>
+            <List.Item as ={Link} to = {'/about'} onClick={hideMenuOption} >About</List.Item>
         </List>
     )
 }
