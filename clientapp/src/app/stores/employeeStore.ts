@@ -124,4 +124,17 @@ export default class EmployeeStroe{
             console.log(error);
         }
     }
+
+
+
+    /*--------------------------------------*/
+    /* html rendering--------------------------------------*/
+    /*--------------------------------------*/
+
+    isMenuvisible = false;
+
+    toggleMenuOption =()=>{
+        this.isMenuvisible = !this.isMenuvisible;
+    }
+    
 }

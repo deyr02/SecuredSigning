@@ -8,6 +8,57 @@ body {
   background-color: rgb(216, 215, 215);
 }
 
+#mobile-nav {
+  display: block;
+}
+
+#desktop-nav {
+  display: none;
+}
+
+/*--------------------------------------------------------*/
+/*------------------------Mobile Nav--------------------------------*/
+/*--------------------------------------------------------*/
+
+.mobile-nav-expand {
+  background-color: teal;
+  height: 50vh;
+  position: absolute;
+  top: 69px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.mobile-nav-expand .list {
+  width: 100%;
+  padding: 20px !important;
+}
+
+.mobile-nav-expand .list .item {
+  text-align: center;
+  padding: 10pxpx;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+/*--------------------------------------------------------*/
+/*------------------------desktop Nav--------------------------------*/
+/*--------------------------------------------------------*/
+
+.desktop-nav-expand {
+  height: 68px;
+}
+
+.desktop-nav-expand .list {
+  display: flex;
+  align-items: center;
+}
+
+.desktop-nav-expand .list .item {
+  padding: 5px !important;
+}
+
 /*--------------------------------------------------------*/
 .main-container {
   margin-top: 85px;
@@ -16,9 +67,6 @@ body {
 
 /*--------------------------------------------------------*/
 
-/*--------------------------------------------------------*/
-/*------------------------EmployeeList--------------------------------*/
-/*--------------------------------------------------------*/
 .user-item {
   margin: 15px 0 !important;
   padding: 5px !important;
@@ -55,4 +103,31 @@ body {
 }
 .ckeckbox-align label {
   margin-left: 15px;
+}
+
+/*--------------------------------------------------------*/
+/* Max width (600px)--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+
+@media screen and (min-width: 479px) {
+}
+
+/*--------------------------------------------------------*/
+/* Max width (767px)--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+
+@media screen and (min-width: 767px) {
+  #mobile-nav {
+    display: none;
+  }
+  #desktop-nav {
+    display: block;
+  }
+}
+
+/*--------------------------------------------------------*/
+/* Max width (991px)--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+@media screen and (max-width: 991px) {
+  /* start of large tablet styles */
 }
