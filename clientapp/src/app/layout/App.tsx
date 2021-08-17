@@ -15,7 +15,7 @@ function App() {
     <>
     <ModalContainer/>
     <Navbar></Navbar>
-      <Container style={{marginTop:'7em'}} >
+      <Container  style={{marginTop:'7em'}} >
           <Route exact path='/' component={Home}/>
           <Switch>
               <Route exact path='/employee' component={EmployeeListMain} />

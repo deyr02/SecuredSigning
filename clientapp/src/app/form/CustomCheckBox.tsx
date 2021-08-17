@@ -14,7 +14,7 @@ export default function MyTextInput(props: Props) {
     return (
         <Form.Field error={meta.touched && !!meta.error}>
            <div className="ckeckbox-align">
-                <input  {...field} {...props} />
+                <input  {...field} {...props} checked = {field.value} />
                 <label>{props.label}</label>
            </div>
             

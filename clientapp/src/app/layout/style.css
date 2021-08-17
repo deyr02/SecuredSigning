@@ -248,6 +248,57 @@ body {
   column-span: 2;
 }
 
+/* copiedToPdf--------------------------------------------------------*/
+#pdf {
+  display: none;
+}
+#copiedToPdf {
+  width: 595px;
+  height: 842px;
+  transform: scale(0.8);
+  z-index: -1;
+  padding: 5px;
+  background-color: white;
+}
+
+#copiedToPdf .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  background-color: #333;
+  border: 1px solid white;
+}
+
+#copiedToPdf .row-header {
+  width: 100%;
+  background-color: var(--main-color-orange) !important;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
+
+#copiedToPdf .level,
+#copiedToPdf .level-value {
+  background-color: #333;
+  color: white;
+  padding: 5px;
+}
+
+#copiedToPdf .level {
+  width: 32%;
+  border-right: 1px solid;
+  padding-left: 5px;
+}
+
+#copiedToPdf .level-value {
+  width: 65%;
+  padding: 0 5px;
+}
+
 /*--------------------------------------------------------*/
 
 .ckeckbox-align {
@@ -258,6 +309,11 @@ body {
 .ckeckbox-align label {
   margin-left: 15px;
 }
+
+/*--------------------------------------------------------*/
+/* About--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+
 
 /*--------------------------------------------------------*/
 /* Max width (600px)--------------------------------------------------------*/
@@ -277,6 +333,12 @@ body {
   #desktop-nav {
     display: block;
   }
+
+  /*------------------------------------------------*/
+  /* pdf table------------------------------------------------*/
+  /*------------------------------------------------*/
+
+  /*------------------------------------------------*/
 }
 
 /*--------------------------------------------------------*/

@@ -161,7 +161,9 @@ export default class EmployeeStroe{
     isMenuvisible = false;
 
     toggleMenuOption =()=>{
+     
         this.isMenuvisible = !this.isMenuvisible;
+     
     }
     
 }

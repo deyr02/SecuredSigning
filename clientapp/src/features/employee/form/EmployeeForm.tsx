@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { Button, Form, Header, Segment } from 'semantic-ui-react';
+import { Button, Form, Header, Icon, Segment } from 'semantic-ui-react';
 import { Employee } from '../../../app/models/employee';
 import { useStore } from '../../../app/stores/store';
 import * as Yup from "yup";
@@ -16,6 +16,7 @@ import {v4 as uuid} from "uuid";
 
 export default observer(function EmployeeForm(){
     const history = useHistory();
+    const [header, setHeader] = useState<string>("New Employee");
     const[employee, setEmployee] = useState<Employee>(new Employee());
     const{id} =useParams<{id:string}>();
     const {employeeStore} = useStore();
@@ -57,7 +58,7 @@ export default observer(function EmployeeForm(){
     useEffect( ()=>{
         if(id){
              employeeStore.loadSelectedEmployee(id).then(() => setEmployee(new Employee(employeeStore.getSelectedEmployee)));
-
+            setHeader("Edit Details")
         }
          
     }, [employeeStore, id])
@@ -69,8 +70,6 @@ export default observer(function EmployeeForm(){
                 history.push(`/details/${emp.id}`);
                
             });
-           
-           
         } else {
         
            employeeStore.updateEmployee(emp).then(()=> history.push(`/details/${emp.id}`));;
@@ -80,7 +79,8 @@ export default observer(function EmployeeForm(){
 
     return(
         <Segment clearing>
-            <Header size='huge' content = "Employee info" sub color="teal"/>
+        <Header className="detail-header" textAlign='center' size='huge'  > <Icon name='user' /> {header}</Header>
+
             <Formik
                 validationSchema = {validationSchema}
                 enableReinitialize = {true}
@@ -97,6 +97,7 @@ export default observer(function EmployeeForm(){
                      onSubmit={handleSubmit}  
                      autoComplete='off'
                     >
+                        <Header size='huge' content = "Employee info" sub color="teal"/>
                       
                          <CustomTextInput placeholder="FirstName" name = "firstName"  label="First Name"/>
                         <CustomTextInput placeholder="Last name" name = "lastName" label= "Last Name"/>
@@ -114,14 +115,14 @@ export default observer(function EmployeeForm(){
                         <CustomTextInput placeholder="Relationship" name = "emergencyContactRelationship" label="Relation"/>
                         <CustomTextInput placeholder="Phone Number with country code (+xxxxxxxx)" name = "emergencyConteactPhoneNUmber" label = "Contact Number"/>
 
-                        <CustomCheckBox placeholder="Is Signed" name = "isSigned" type="checkbox" label= "(Terms and Condition)"/>
+                        <CustomCheckBox placeholder="Is Signed" name = "isSigned" type="checkbox"  label= "(Terms and Condition)"/>
 
                         <Button
                             disabled = {isSubmitting ||!dirty ||!isValid}
                             loading={isSubmitting} floated="right"
                             positive type='submit' content= "Submit"
                         />
-                        <Button floated='right' type='button' content="Cancel"/>
+                       
 
 
                     </Form>
