@@ -1,4 +1,3 @@
-import { date } from "yup/lib/locale";
 
 export interface Employee{
        id: string;

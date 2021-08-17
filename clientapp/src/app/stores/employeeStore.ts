@@ -72,7 +72,7 @@ export default class EmployeeStroe{
         this.setEmployeeRegistery(tempEmployeeRegistry);
        }
        else{
-           this.setSearchResultText("No emplyee Found by  given name. " );
+           this.setSearchResultText("No emplyee Found by the given name. " );
        
         }
        
@@ -123,6 +123,33 @@ export default class EmployeeStroe{
         } catch (error) {
             console.log(error);
         }
+    }
+
+    deleteEmployee = async (id: string) => {
+        this.loadingInitial = true;
+        try {
+            await agent.Emp.delete(id);
+            runInAction(() => {
+                
+                this.loadingInitial = false;
+                window.location.reload();
+            })
+        } catch (error) {
+            console.log(error);
+            runInAction(() => {
+                this.loadingInitial = false;
+            })
+        }
+    }
+
+
+
+    getEmployeeById = (id:string)=>{
+        this.employeeRegistry.forEach(element => {
+            if(element.id === id){
+                return Employee;
+            }
+        });
     }
 
 

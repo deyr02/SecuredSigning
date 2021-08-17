@@ -1,30 +1,43 @@
 import { observer } from 'mobx-react-lite';
-import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { Button, List } from 'semantic-ui-react';
 import { useStore } from '../../../app/stores/store';
+import MessageComponent from '../../appMessage/MessageComponent';
 
 export default observer( function EmployeeTable(){
-    const{employeeStore}= useStore();
+    const{employeeStore, modalStore}= useStore();
     return (
     
-        <List divided animated verticalAlign= 'middle'>
+        <List divided animated verticalAlign= 'middle' >
             {
                 employeeStore.getEmployeeRegistry.map(employee =>(
-                    <List.Item key={ employee.id} className='user-item'>
-                        <List.Content>
-                            <List.Icon name="user" className='user-card-icon' size='huge' verticalAlign='middle'></List.Icon>
-                            <List.Content>
-                                <List.Content className="user-info">Name    : {employee.firstName + " "+ employee.lastName}</List.Content>
-                                <List.Content className="user-info">Position: {employee.position}</List.Content>
-                            </List.Content>
-                        </List.Content>
-                        <List.Content floated='right'>
-                            <Button className="view-button"> More <span>Details</span></Button>
-                        </List.Content>
-                    </List.Item>
+                    <div key={ employee.id} className='employee-item'>
+                        <div className="employee-info">
+                            <div className="employee-icon">
+                                <i className='user icon'></i>
+                            </div>
+                            <div className="employee-details">
+                                    <div className="info">Name    : {employee.firstName + " "+ employee.lastName}</div>
+                                    <div className="info">Position: {employee.position}</div>
+                            </div>
+                        </div>
+                        
+                        <div className='employee-control'>
+                             <Button className="delete-button" 
+                                onClick={()=> modalStore.openModal(
+                                <MessageComponent 
+                                    messageType ='warning'
+                                    message = {`Do you really want to delete employee named " ${employee.firstName + " "+ employee.lastName}" ?`}
+                                    confirm = {()=> employeeStore.deleteEmployee(employee.id)}
+                                />)}
+                             > Delete </Button>
+                            <Button className="view-button"  as={Link} to={`/details/${employee.id}`}> More <span>Details</span></Button>
+                           
+                        </div>
+                    </div>
                 ))
             }
-            
+            <div className="reload"><Button href='#' onClick={()=>window.location.reload()}>Reload Employee</Button></div>
         </List>
 
     );

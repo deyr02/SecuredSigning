@@ -1,17 +1,12 @@
-import { ErrorMessage, Field, Formik } from 'formik';
-import { values } from 'mobx';
+import { Formik } from 'formik';
 import { observer } from 'mobx-react-lite';
-import * as React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { ChangeEvent } from 'react';
-import { useParams } from 'react-router-dom';
-import { Button, Form, FormField, Header, Label, Segment } from 'semantic-ui-react';
-import { date, string } from 'yup/lib/locale';
+import { useHistory, useParams } from 'react-router-dom';
+import { Button, Form, Header, Segment } from 'semantic-ui-react';
 import { Employee } from '../../../app/models/employee';
 import { useStore } from '../../../app/stores/store';
 import * as Yup from "yup";
-import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import CustomDateInput from '../../../app/form/CustomDateInput';
 import CustomCheckBox from '../../../app/form/CustomCheckBox';
@@ -20,11 +15,10 @@ import CustomSelectInput from '../../../app/form/CustomSelectInput';
 import {v4 as uuid} from "uuid";
 
 export default observer(function EmployeeForm(){
-
+    const history = useHistory();
     const[employee, setEmployee] = useState<Employee>(new Employee());
-   // const{id} =useParams<{id:string}>();
+    const{id} =useParams<{id:string}>();
     const {employeeStore} = useStore();
-    const {loadSelectedEmployee, getSelectedEmployee} = employeeStore;
      const employmentType = [
         {text: 'Full Time', value: 'Full-time'},
         {text: 'Part Time', value: 'Part-time'},
@@ -42,18 +36,18 @@ export default observer(function EmployeeForm(){
         maillingAdress: Yup.string().required("please input mailling Address.").max(250, "Mailing address should be below 250 characters"),
         email: Yup.string().email().required("Please input your email address"),
         phoneNumber: Yup.string().required("Please input your phone number")
-            .matches(/^(\+[0-9]{2,}[0-9]{4,}[0-9]*)(x?[0-9]{1,})?$/, "Please input a valid phone number"),
+            .matches(/^(\+[0-9]{2,}[0-9]{4,}[0-9]*)(x?[0-9]{1,})?$/, "Please input a valid phone number (+xxxxxxxxxxxxx)"),
         citizenshipStatus : Yup.string().max (50, "CitizenShip Status shoulc be below 50 characters")
             .required("Pleasse input your citizenship status"),
         employmentStartDate: Yup.date().required("Please input employment start Date").nullable(),
         employmentType: Yup.string().required("Please select employment type"),
-        position: Yup.string(). required("Please input position").max(50, "Position should be below 50 characters"),
+        position: Yup.string().required("Please input position").max(50, "Position should be below 50 characters"),
         emergencyContactName: Yup.string().required("Please input emergency contact Name")
             .max(50, "Emergency contact name should be below 50 characters."),
         emergencyContactRelationship:Yup.string().required("Please input relationship with emergency contact ")
             .max(50, "Emergency contact relationship should be below 50 characters."),
         emergencyConteactPhoneNUmber: Yup.string().required("Please input your phone number")
-            .matches(/^(\+[0-9]{2,}[0-9]{4,}[0-9]*)(x?[0-9]{1,})?$/, "Please input a valid phone number"),
+            .matches(/^(\+[0-9]{2,}[0-9]{4,}[0-9]*)(x?[0-9]{1,})?$/, "Please input a valid phone number (+xxxxxxxxxxxxx)"),
         isSigned: Yup.boolean().isTrue("You need to accept terms and conditions").required( "You need to accept terms and conditions")
         
     });
@@ -61,19 +55,25 @@ export default observer(function EmployeeForm(){
  
 
     useEffect( ()=>{
-       employeeStore.loadSelectedEmployee("7ac6a0ab-905c-406a-8b54-246983c1e6e8").then(() => setEmployee(new Employee(employeeStore.getSelectedEmployee)));
+        if(id){
+             employeeStore.loadSelectedEmployee(id).then(() => setEmployee(new Employee(employeeStore.getSelectedEmployee)));
+
+        }
          
-    }, [employeeStore])
+    }, [employeeStore, id])
 
     function handleFormSubmit(emp:Employee) {
         if (emp.id === '') {
             emp.id = uuid();
-            employeeStore.createEmployee(emp);
-            console.log(emp)
-            // createActivity(newActivity).then(() => history.push(`/activities/${newActivity.id}`))
+            employeeStore.createEmployee(emp).then(()=> {
+                history.push(`/details/${emp.id}`);
+               
+            });
+           
+           
         } else {
-           // updateActivity(activity).then(() => history.push(`/activities/${activity.id}`))
-           employeeStore.updateEmployee(emp);
+        
+           employeeStore.updateEmployee(emp).then(()=> history.push(`/details/${emp.id}`));;
         }
     }
    
@@ -112,7 +112,7 @@ export default observer(function EmployeeForm(){
                          <Header size="huge" content = "Emergency contact details" sub color="teal"/>
                         <CustomTextInput placeholder="Emergency Contact Name" name = "emergencyContactName" label="Name"/>
                         <CustomTextInput placeholder="Relationship" name = "emergencyContactRelationship" label="Relation"/>
-                        <CustomTextInput placeholder="Contact Number" name = "emergencyConteactPhoneNUmber" label = "Contact Number"/>
+                        <CustomTextInput placeholder="Phone Number with country code (+xxxxxxxx)" name = "emergencyConteactPhoneNUmber" label = "Contact Number"/>
 
                         <CustomCheckBox placeholder="Is Signed" name = "isSigned" type="checkbox" label= "(Terms and Condition)"/>
 

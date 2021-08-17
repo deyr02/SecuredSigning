@@ -1,6 +1,4 @@
 import { observer } from 'mobx-react-lite';
-import * as React from 'react';
-import { useState } from 'react';
 import { Container, Menu } from 'semantic-ui-react';
 import { useStore } from '../../stores/store';
 import NavOptions from './NavOptions';

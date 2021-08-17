@@ -10,7 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(243, 243, 243);
+  background-color: var(--main-color-blue);
 }
 
 #mobile-nav {
@@ -30,10 +30,11 @@ body {
   margin-right: 0 !important;
 }
 #mobile-nav .menu {
-  background-color: black !important;
+  background-color: #d8dee2;
 }
+
 #mobile-nav .menu .item i {
-  color: var(--main-color-orange);
+  color: var(--main-color-blue);
   font-size: 35px !important;
 }
 
@@ -44,7 +45,6 @@ body {
   position: fixed;
   top: 50px;
   padding-bottom: 5vh;
-
   z-index: 2;
 }
 
@@ -89,40 +89,165 @@ body {
 }
 
 /*--------------------------------------------------------*/
-.main-container {
-  margin-top: 85px;
-  padding: 15px 8px;
+/*------------------------Home--------------------------------*/
+/*--------------------------------------------------------*/
+.welcome-header {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-header i {
+  font-size: 80px;
+  color: var(--main-color-orange);
+}
+.welcome-header h1,
+.welcome-header h2 {
+  color: white;
 }
 
 /*--------------------------------------------------------*/
 
-.user-item {
+.employee-item {
   margin: 15px 0 !important;
-  padding: 5px !important;
+  padding: 15px 5px !important;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  border: 1px solid var(--main-color-blue);
 }
 
-.user-card-icon {
-  color: gold;
-  background-color: black;
-  font-size: 30px !important;
-  text-align: center;
-  margin: auto;
-  padding: 0 8px;
+.employee-info {
+  display: flex;
+  align-items: center;
+  padding: 5px 0 !important;
 }
-.user-info {
+
+.employee-icon i.icon {
+  height: auto !important;
+  font-size: 45px !important;
+}
+
+.employee-icon {
+  color: var(--main-color-blue);
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  height: auto !important;
+}
+.employee-info {
   color: black !important;
   font-weight: bold;
 }
 
+.employee-details {
+  padding: 10px;
+}
+
+.employee-details .info {
+  max-width: 50vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.employee-control {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .view-button {
+  background-color: var(--main-color-blue) !important;
+  color: white !important;
+}
+.delete-button {
+  background-color: var(--main-color-orange) !important;
+  color: white !important;
+}
+.reload {
+  display: flex;
+  justify-content: center;
+}
+.reload a {
+  margin: 10px 20px;
+  cursor: pointer;
+
+  font-size: 20px;
+  letter-spacing: 1px;
+  transition: all 2s ease;
+}
+
+.reload a:hover {
+  cursor: pointer;
+  color: var(--main-color-orange);
+  text-decoration: underline;
+  letter-spacing: 2px;
+}
+
+/*-search bar-------------------------------------------------------*/
+.search-box {
+  position: relative;
+}
+.search-input {
+  font-size: 18px !important;
+  width: 100%;
+  margin: 15px 0;
+  padding: 15px 15px !important;
+  border-radius: 25px;
+  border: none;
+  background-color: var(--main-color-blue);
+  color: black;
+}
+.search-input:focus {
+  border: none !important;
+  outline: none !important ;
+  background-color: var(--main-color-blue);
+  color: white !important;
+}
+
+.search-box-icon {
+  position: absolute;
+  right: 5px;
+  top: 18.5px;
   background-color: black !important;
-  color: gold !important;
+  color: white;
+  z-index: 0;
+  font-size: 20px !important;
+  font-weight: bold;
+}
+
+.search-text {
+  text-align: center;
+  color: red;
+  font-size: 18px;
 }
 
 /*--------------------------------------------------------*/
+
 /*--------------------------------------------------------*/
+/*Detatils--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+
+.detail-header {
+  margin: 25px 0px !important;
+  font-size: 2em !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detail-header i {
+  color: var(--main-color-blue) !important;
+}
+
+.table-header {
+  font-size: 20px;
+  color: var(--main-color-orange) !important;
+  background-color: var(--main-color-orange) !important;
+  margin: 0 !important;
+  column-span: 2;
+}
+
 /*--------------------------------------------------------*/
 
 .ckeckbox-align {

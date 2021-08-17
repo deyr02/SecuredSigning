@@ -1,32 +1,37 @@
 import { observer } from 'mobx-react-lite';
 import { useEffect } from 'react';
-import { Header, Icon, Segment, Table } from 'semantic-ui-react';
+import { Link, useParams } from 'react-router-dom';
+import { Button, Header, Icon, Segment, Table } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import { useStore } from '../../../app/stores/store';
 import NotFound from '../../errors/NotFound';
 
+
 export default observer( function EmployeeDetailComponent(){
     const {employeeStore} = useStore();
     const {selectedEmployee}= employeeStore;
-    //const{id} = useParams<{id:string}>();
+    const{id} = useParams<{id:string}>();
 
     useEffect(()=>{
-        employeeStore.loadSelectedEmployee("7ac6a0ab-905c-406a-8b54-246983c1e6e8");     
+        if(id){
+         
+            employeeStore.loadSelectedEmployee(id);     
+        }
            
 
-    },[employeeStore])
+    },[employeeStore, id])
 
     return(
         <>
         {employeeStore.loadingInitial? (<LoadingComponent/>):
         (employeeStore.getSelectedEmployee?.id === undefined? (<NotFound/>):(
             <Segment clearing>
-                        <Header className="detail-header" textAlign='center' size='huge'  dividing> <Icon name='user' /> User Details</Header>
+                        <Header className="detail-header" textAlign='center' size='huge'  > <Icon name='user' /> Employee Details</Header>
 
-                        <Table celled inverted striped selectable>
+                        <Table padded celled inverted striped selectable>
                             <Table.Header>
                                 <Table.Row>
-                                    <Table.HeaderCell textAlign='center'  colSpan="2">Employee Credentials</Table.HeaderCell>
+                                    <Table.HeaderCell className="table-header" textAlign='center'  colSpan="2">Employee Credentials</Table.HeaderCell>
                                 </Table.Row>
                             </Table.Header>
                             <Table.Body>
@@ -58,17 +63,17 @@ export default observer( function EmployeeDetailComponent(){
                                         <Table.Cell collapsing>Employment Type</Table.Cell>
                                         <Table.Cell>{selectedEmployee?.employmentType}</Table.Cell>
                                 </Table.Row>
-                                 <Table.Row>
+                                  <Table.Row>
                                         <Table.Cell collapsing>Joining Date</Table.Cell>
-                                        <Table.Cell>{selectedEmployee?.employmentStartDate}</Table.Cell>
-                                </Table.Row>
+                                        <Table.Cell>{selectedEmployee?.employmentStartDate.toString().split('T')[0]}</Table.Cell>
+                                </Table.Row> 
                                  <Table.Row>
                                         <Table.Cell collapsing>Position</Table.Cell>
                                         <Table.Cell>{selectedEmployee?.position}</Table.Cell>
                                 </Table.Row>
-                                <Table.Row>
-                                    <Table.HeaderCell textAlign='center'  colSpan="2">Emergency Contact</Table.HeaderCell>
-                                </Table.Row>
+                                 <Table.Row>
+                                    <Table.HeaderCell className ='table-header' textAlign='center'  colSpan="2">Emergency Contact</Table.HeaderCell>
+                                </Table.Row> 
                                  <Table.Row>
                                         <Table.Cell collapsing>Name</Table.Cell>
                                         <Table.Cell>{selectedEmployee?.emergencyContactName}</Table.Cell>
@@ -79,14 +84,14 @@ export default observer( function EmployeeDetailComponent(){
                                 </Table.Row>
                                  <Table.Row>
                                         <Table.Cell collapsing>Phone Number</Table.Cell>
-                                        <Table.Cell>{selectedEmployee?.phoneNumber}</Table.Cell>
-                                </Table.Row>
-                                <Table.Row>
-                                    <Table.HeaderCell textAlign='center'  colSpan="2">Signature</Table.HeaderCell>
+                                        <Table.Cell>{selectedEmployee?.emergencyConteactPhoneNUmber}</Table.Cell>
                                 </Table.Row>
                                  <Table.Row>
-                                        <Table.Cell collapsing>Citizenship Status</Table.Cell>
-                                        <Table.Cell>{selectedEmployee?.isSigned? "Digitally signed": "Not Signed"}</Table.Cell>
+                                    <Table.HeaderCell className='table-header' textAlign='center'  colSpan="2">Signature</Table.HeaderCell>
+                                </Table.Row> 
+                                 <Table.Row>
+                                        <Table.Cell collapsing>Signature</Table.Cell>
+                                        <Table.Cell>{selectedEmployee?.isSigned? "Digitally signed by acceptiing 'terms and condition'.": "Not Signed"}</Table.Cell>
                                 </Table.Row>
 
                             </Table.Body>
@@ -94,7 +99,13 @@ export default observer( function EmployeeDetailComponent(){
 
                         </Table>
                     
-
+                    <div className='employee-control'>
+                             <Button className="delete-button" as={Link} to={`/edit/${selectedEmployee?.id}`}
+                               
+                             > Edit Details </Button>
+                            <Button className="view-button"> Download details as PDF</Button>
+                           
+                        </div>
                     </Segment>
 
         ))}

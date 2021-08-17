@@ -6,14 +6,16 @@ import EmployeeDetailComponent from '../../features/employee/employeeDetails/Emp
 import EmployeeListMain from '../../features/employee/employeeList/EmployeeListMain';
 import EmployeeForm from '../../features/employee/form/EmployeeForm';
 import Home from '../../features/home/Home';
+import ModalContainer from '../common/modalContainer';
 import Navbar from './navbar/Navbar';
 import './style.css';
 
 function App() {
   return (
     <>
+    <ModalContainer/>
     <Navbar></Navbar>
-      <Container className = 'main-container'>
+      <Container style={{marginTop:'7em'}} >
           <Route exact path='/' component={Home}/>
           <Switch>
               <Route exact path='/employee' component={EmployeeListMain} />
