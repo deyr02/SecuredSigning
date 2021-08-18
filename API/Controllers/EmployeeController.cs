@@ -47,8 +47,11 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> EditEmployee(Guid id, Employee emp)
         {
+            await DeleteEmployees(id);
+            return HandleResult(await Mediator.Send(new Create.Command { Employee = emp }));
 
-            return HandleResult(await Mediator.Send(new Edit.Command { Employee = emp }));
+
+            //return HandleResult(await Mediator.Send(new Edit.Command { Employee = emp }));
         }
 
         [HttpDelete("{id}")]
