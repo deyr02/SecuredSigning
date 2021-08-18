@@ -12,6 +12,7 @@ export default observer( function EmployeeListMain(){
 
     const{employeeStore}= useStore();
     useEffect(()=>{
+        employeeStore.setEmployeeRegistery([]);
         employeeStore.loadEmployees();
     }, [employeeStore])
 

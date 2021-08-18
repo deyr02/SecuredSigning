@@ -1,7 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
 import { Employee } from "../models/employee";
-import {v4 as uuid} from "uuid";
 
 
 export default class EmployeeStroe{
@@ -19,12 +18,10 @@ export default class EmployeeStroe{
 
         this.loadingInitial = true;
         try{
-            await agent.Emp.list().then(response =>{
-                runInAction(()=>{
-                    this.employeeRegistry = response;
-                    this.loadingInitial= false;
-                
-                })
+           const result = await agent.Emp.list();
+            this.employeeRegistry = result;
+            runInAction(()=>{
+                    this.loadingInitial= false;    
             })
         }
         catch (error)

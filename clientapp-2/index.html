@@ -2,6 +2,8 @@
 <html>
 
 <head>
+<meta charset="UTF-8">
+
     <title>Dog Walk (Knockout.js)</title>
     <link rel="stylesheet" type="text/css" href="./style.css" />
 
@@ -11,6 +13,7 @@
 
     <script type='text/javascript'
         src="https://cdnjs.cloudflare.com/ajax/libs/knockout-validation/2.0.4/knockout.validation.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
 </head>
 
@@ -41,37 +44,37 @@
                 </div>
                 <div class="field">
                     <label for="last-name">Last Name*</label>
-                    <input data-bind="value: LastName, css: { error: last-name.error() && lastName.isModified() }"
+                    <input data-bind="value: lastName, css: { error: lastName.error() && lastName.isModified() }"
                         id="last-name" type="text" />
                 </div>
                 <div class="field">
-                    <label for="full-address">Full Address*>
-                    <input data-bind="value: fullAddress, css: { error: full-address.error() && fullAddress.isModified() }"
+                    <label for="full-address">Full Address*
+                    <input data-bind="value: fullAddress, css: { error: fullAddress.error() && fullAddress.isModified() }"
                         id="full-address" type="text" />
                 </div>
                 <div class="field">
                     <label for="mailling-address">Mailing Address*</label>
-                    <input data-bind="value: maillingAddress, css: { error: mailling-address.error() && maillingAddress.isModified() }"
+                    <input data-bind="value: maillingAddress, css: { error: maillingAddress.error() && maillingAddress.isModified() }"
                         id="mailling-address" type="text" />
                 </div>
                 <div class="field">
                     <label for="email-address">Email*</label>
-                    <input data-bind="value: email, css: { error: email-address.error() && email.isModified() }"
+                    <input data-bind="value: email, css: { error: email.error() && email.isModified() }"
                         id="email-address" type="text" />
                 </div>
                 <div class="field">
                     <label for="phone-number">Phone Number*</label>
-                    <input data-bind="value: phoneNumber, css: { error: phone-number.error() && phoneNumber.isModified() }"
+                    <input data-bind="value: phoneNumber, css: { error: phoneNumber.error() && phoneNumber.isModified() }"
                         id="phone-number" type="text" />
                 </div>
                 <div class="field">
                     <label for="citizenship-status">Citizenship Status*</label>
-                    <input data-bind="value: citizenshipStatus, css: { error: citizenship-status.error() && citizenshipStatus.isModified() }"
+                    <input data-bind="value: citizenshipStatus, css: { error: citizenshipStatus.error() && citizenshipStatus.isModified() }"
                         id="citizenship-status" type="text" />
                 </div>
                 <div class="field">
                     <label for="employment-start-date">Employment Start Date*</label>
-                    <input data-bind="value: employmentStartDate, css: { error: employment-start-date.error() && employmentStartDate.isModified() }"
+                    <input data-bind="value: employmentStartDate, css: { error: employmentStartDate.error() && employmentStartDate.isModified() }"
                         id="employment-start-date" type="date" />
                 </div>
 
@@ -90,8 +93,8 @@
                 </div>
 
                 <div class="field">
-                    <label for="designation">Last Name*</label>
-                    <input data-bind="value: position, css: { error: designation.error() && position.isModified() }"
+                    <label for="designation">Position*</label>
+                    <input data-bind="value: position, css: { error: position.error() && position.isModified() }"
                         id="designation" type="text" />
                 </div>
 
@@ -101,27 +104,27 @@
 
                 <div class="field">
                     <label for="emergency-contact-name">Name*</label>
-                    <input data-bind="value: emergencyContactName, css: { error: emergency-contact-name.error() && emergencyContactName.isModified() }"
+                    <input data-bind="value: emergencyContactName, css: { error: emergencyContactName.error() && emergencyContactName.isModified() }"
                         id="emergency-contact-name" type="text" />
                 </div>
                 <div class="field">
                     <label for="emergency-contact-relationship">Relationship *</label>
-                    <input data-bind="value: emergencyContactRelationship, css: { error: emergency-contact-relationship.error() && emergencyContactRelationship.isModified() }"
+                    <input data-bind="value: emergencyContactRelationship, css: { error: emergencyContactRelationship.error() && emergencyContactRelationship.isModified() }"
                         id="emergency-contact-relationship" type="text" />
                 </div>
                 <div class="field">
                     <label for="emergency-contact-number">Contact Number*</label>
-                    <input data-bind="value: emergencyContactPhoneNUmber, css: { error: emergency-contact-number.error() && emergencyContactPhoneNUmber.isModified() }"
+                    <input data-bind="value: emergencyConteactPhoneNUmber, css: { error: emergencyConteactPhoneNUmber.error() && emergencyConteactPhoneNUmber.isModified() }"
                         id="emergency-contact-number" type="text" />
                 </div>
                 <h4>Signature</h4>
                 <div class="field">
-                    <input data-bind="value: isSigned, css: { error: is-signed.error() && isSigned.isModified() }"
+                    <input data-bind="checked: isSigned, css: { error: isSigned.error() && isSigned.isModified() }"
                         id="is-signed" type="checkbox" /> <label for="is-signed">Terms and Condition*</label>
                 </div>
 
                 
-                <input type="submit" value="Continue">
+                <input type="submit" value="Subbmit">
             </form>
         </div>
         <footer>

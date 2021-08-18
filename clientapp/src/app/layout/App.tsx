@@ -18,7 +18,7 @@ function App() {
       <Container  style={{marginTop:'7em'}} >
           <Route exact path='/' component={Home}/>
           <Switch>
-              <Route exact path='/employee' component={EmployeeListMain} />
+              <Route exact path='/employees' component={EmployeeListMain} />
               <Route exact path='/create' component={EmployeeForm} />
               <Route exact path='/edit/:id' component={EmployeeForm} />
               <Route exact path='/details/:id' component={EmployeeDetailComponent} />

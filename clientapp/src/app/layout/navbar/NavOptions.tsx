@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { List } from 'semantic-ui-react';
 
 interface Props{
@@ -14,11 +13,11 @@ export default function NavOptions({hideMenuOption}:Props){
     }
     return (
         <List size= "large" link>
-            <List.Item as ={Link} to = {'/'}  onClick={hideMenuOption} >Home</List.Item>
-            <List.Item as ={Link} to = {'/employee'} onClick={hideMenuOption} >Employee</List.Item>
+            <List.Item as ={NavLink} to = {'/'}  onClick={hideMenuOption} >Home</List.Item>
+            <List.Item as ={NavLink} to = {'/employees'} onClick={hideMenuOption} >Employee</List.Item>
           
-            <List.Item as ={Link} to = {'/create'} onClick={reload} >Create Employee</List.Item>
-            <List.Item as ={Link} to = {'/about'} onClick={hideMenuOption} >About</List.Item>
+            <List.Item as ={NavLink} to = {'/create'} onClick={reload} >Create Employee</List.Item>
+            <List.Item as ={NavLink} to = {'/about'} onClick={hideMenuOption} >About</List.Item>
         </List>
     )
 }

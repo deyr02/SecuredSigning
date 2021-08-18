@@ -53,10 +53,10 @@ const requests = {
 }
 
 const Emp = {
-    list: () => requests.get<Employee[]>('/employee'),
+    list: () => axios.get<Employee[]>('/employee').then(responseBody),
     details: (id: string)=> requests.get<Employee>(`/employee/${id}`),
     create: (employee: {}) => requests.post<void>('/employee', employee),
-    update:(employee:Employee)=> requests.put<void>(`employee/${employee.id}`, employee ),
+    update:(employee:{})=> requests.put<void>('/employee', employee ),
     delete:(id:string) => requests.del<void>(`employee/${id}`)
 }
 
