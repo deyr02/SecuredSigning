@@ -128,12 +128,13 @@ export default class EmployeeStroe{
     deleteEmployee = async (id: string) => {
         this.loadingInitial = true;
         try {
-            await agent.Emp.delete(id);
-            runInAction(() => {
-                
-                this.loadingInitial = false;
-                window.location.reload();
-            })
+            await agent.Emp.delete(id).then(()=>{
+                  runInAction(() => {
+                      this.loadEmployees();
+                    this.loadingInitial = false;
+                })
+            });
+         
         } catch (error) {
             console.log(error);
             runInAction(() => {

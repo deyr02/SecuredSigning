@@ -1,9 +1,8 @@
 import jsPDF from 'jspdf';
 import { observer } from 'mobx-react-lite';
-import { ReactElement } from 'react';
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Button, Header, Icon, Segment, Table } from 'semantic-ui-react';
+import { Button, Header, Icon, Segment } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import { useStore } from '../../../app/stores/store';
 import NotFound from '../../errors/NotFound';

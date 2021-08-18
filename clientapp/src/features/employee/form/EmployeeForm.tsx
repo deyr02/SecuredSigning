@@ -21,8 +21,8 @@ export default observer(function EmployeeForm(){
     const{id} =useParams<{id:string}>();
     const {employeeStore} = useStore();
      const employmentType = [
-        {text: 'Full Time', value: 'Full-time'},
-        {text: 'Part Time', value: 'Part-time'},
+        {text: 'Fulltime', value: 'Fulltime'},
+        {text: 'Parttime', value: 'Parttime'},
         {text: 'Casual', value: 'Casual'},
         
     ]
@@ -68,12 +68,16 @@ export default observer(function EmployeeForm(){
             emp.id = uuid();
             employeeStore.createEmployee(emp).then(()=> {
                 history.push(`/details/${emp.id}`);
-               
             });
         } else {
         
-           employeeStore.updateEmployee(emp).then(()=> history.push(`/details/${emp.id}`));;
+           employeeStore.updateEmployee(emp).then(()=>{
+            
+            history.push(`/details/${emp.id}`)
+            
+            });;
         }
+       
     }
    
 

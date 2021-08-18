@@ -6,6 +6,13 @@ import MessageComponent from '../../appMessage/MessageComponent';
 
 export default observer( function EmployeeTable(){
     const{employeeStore, modalStore}= useStore();
+
+    function handleDelete(id:string){
+        employeeStore.deleteEmployee(id).then(()=>{
+            modalStore.closeModal();
+        });
+        
+    }
     return (
     
         <List divided animated verticalAlign= 'middle' >
@@ -28,7 +35,7 @@ export default observer( function EmployeeTable(){
                                 <MessageComponent 
                                     messageType ='warning'
                                     message = {`Do you really want to delete employee named " ${employee.firstName + " "+ employee.lastName}" ?`}
-                                    confirm = {()=> employeeStore.deleteEmployee(employee.id)}
+                                    confirm = {()=> handleDelete(employee.id)}
                                 />)}
                              > Delete </Button>
                             <Button className="view-button"  as={Link} to={`/details/${employee.id}`}> More <span>Details</span></Button>
