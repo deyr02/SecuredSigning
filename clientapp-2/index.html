@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-    <title>Dog Walk (Knockout.js)</title>
+    <title>Secured Signing</title>
     <link rel="stylesheet" type="text/css" href="./style.css" />
 
     <script type='text/javascript'
@@ -23,10 +23,14 @@
             Secured Signing Candidate Evolution.
         </header>
 
-        <!-- <div class="card-section" style="display:none;" data-bind="visible: hasBeenSubmitted">
-            <h2>Thank you for submitting the form!</h2>
-            <p>Please check your email for a confirmation link.</p>
-        </div> -->
+        <h2 class="web-activity" data-bind="text:webActivity"></h2>
+
+         <div class="card-section" style="display:none;" data-bind="visible: hasBeenSubmitted">
+            <h3>Thank you for submitting the form!</h3>
+            <p>The data have been saved in our database successfully</p>
+            <P>Would you like to download the data as PDF?</P>
+            <a href="./pdfDownload.html">Click here to download</a>
+        </div> 
 
         <div class="card-section" data-bind="visible: !hasBeenSubmitted()">
             <h2>Create New Employee</h2>
