@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dog Walk (Knockout.js)</title>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+
+    <script type='text/javascript'
+        src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"></script>
+
+
+    <script type='text/javascript'
+        src="https://cdnjs.cloudflare.com/ajax/libs/knockout-validation/2.0.4/knockout.validation.min.js"></script>
+
+</head>
+
+<body>
+    <div id="knockout-app" class="card">
+        <header>
+            Secured Signing Candidate Evolution.
+        </header>
+
+        <!-- <div class="card-section" style="display:none;" data-bind="visible: hasBeenSubmitted">
+            <h2>Thank you for submitting the form!</h2>
+            <p>Please check your email for a confirmation link.</p>
+        </div> -->
+
+        <div class="card-section" data-bind="visible: !hasBeenSubmitted()">
+            <h2>Create New Employee</h2>
+            <p>Please fill the following information</p>
+
+
+
+            <form data-bind="submit: handleSubmit">
+
+                <h4>Employee info</h4>
+                <div class="field">
+                    <label for="first-name">First Name*</label>
+                    <input data-bind="value: firstName, css: { error: firstName.error() && firstName.isModified() }"
+                        id="first-name" type="text" />
+                </div>
+                <div class="field">
+                    <label for="last-name">Last Name*</label>
+                    <input data-bind="value: LastName, css: { error: last-name.error() && lastName.isModified() }"
+                        id="last-name" type="text" />
+                </div>
+                <div class="field">
+                    <label for="full-address">Full Address*>
+                    <input data-bind="value: fullAddress, css: { error: full-address.error() && fullAddress.isModified() }"
+                        id="full-address" type="text" />
+                </div>
+                <div class="field">
+                    <label for="mailling-address">Mailing Address*</label>
+                    <input data-bind="value: maillingAddress, css: { error: mailling-address.error() && maillingAddress.isModified() }"
+                        id="mailling-address" type="text" />
+                </div>
+                <div class="field">
+                    <label for="email-address">Email*</label>
+                    <input data-bind="value: email, css: { error: email-address.error() && email.isModified() }"
+                        id="email-address" type="text" />
+                </div>
+                <div class="field">
+                    <label for="phone-number">Phone Number*</label>
+                    <input data-bind="value: phoneNumber, css: { error: phone-number.error() && phoneNumber.isModified() }"
+                        id="phone-number" type="text" />
+                </div>
+                <div class="field">
+                    <label for="citizenship-status">Citizenship Status*</label>
+                    <input data-bind="value: citizenshipStatus, css: { error: citizenship-status.error() && citizenshipStatus.isModified() }"
+                        id="citizenship-status" type="text" />
+                </div>
+                <div class="field">
+                    <label for="employment-start-date">Employment Start Date*</label>
+                    <input data-bind="value: employmentStartDate, css: { error: employment-start-date.error() && employmentStartDate.isModified() }"
+                        id="employment-start-date" type="date" />
+                </div>
+
+                <div class="field">
+                    <label for="employment-type">Employment Type*</label>
+                    <div class="select-container">
+                        <select id="employment-type" data-bind="value: employmentType">
+                            <option value="Fulltime">Fulltime</option>
+                            <option value="Parttime">Parttime</option>
+                            <option value="Casual">Casual</option>
+                        </select>
+                        <svg class="select_arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" width="30" viewBox="0 0 768 768">
+                            <path fill="#222" d="M223.5 319.5h321l-160.5 160.5z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="designation">Last Name*</label>
+                    <input data-bind="value: position, css: { error: designation.error() && position.isModified() }"
+                        id="designation" type="text" />
+                </div>
+
+
+
+                <h4>Emergency Contact</h4>
+
+                <div class="field">
+                    <label for="emergency-contact-name">Name*</label>
+                    <input data-bind="value: emergencyContactName, css: { error: emergency-contact-name.error() && emergencyContactName.isModified() }"
+                        id="emergency-contact-name" type="text" />
+                </div>
+                <div class="field">
+                    <label for="emergency-contact-relationship">Relationship *</label>
+                    <input data-bind="value: emergencyContactRelationship, css: { error: emergency-contact-relationship.error() && emergencyContactRelationship.isModified() }"
+                        id="emergency-contact-relationship" type="text" />
+                </div>
+                <div class="field">
+                    <label for="emergency-contact-number">Contact Number*</label>
+                    <input data-bind="value: emergencyContactPhoneNUmber, css: { error: emergency-contact-number.error() && emergencyContactPhoneNUmber.isModified() }"
+                        id="emergency-contact-number" type="text" />
+                </div>
+                <h4>Signature</h4>
+                <div class="field">
+                    <input data-bind="value: isSigned, css: { error: is-signed.error() && isSigned.isModified() }"
+                        id="is-signed" type="checkbox" /> <label for="is-signed">Terms and Condition*</label>
+                </div>
+
+                
+                <input type="submit" value="Continue">
+            </form>
+        </div>
+        <footer>
+            
+        </footer>
+    </div>
+    <script type="text/javascript" src='myscript.js'></script>
+
+</body>
+
+</html>

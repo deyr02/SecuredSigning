@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
 import { Employee } from "../models/employee";
+import {v4 as uuid} from "uuid";
 
 
 export default class EmployeeStroe{
@@ -119,7 +120,8 @@ export default class EmployeeStroe{
             await agent.Emp.update(emp);
             runInAction(() => {
                 this.selectedEmployee = emp;
-            })
+            });
+           
         } catch (error) {
             console.log(error);
         }
