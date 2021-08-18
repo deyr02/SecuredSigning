@@ -44,12 +44,11 @@ namespace API.Controllers
         {
             return HandleResult(await Mediator.Send(new Create.Command { Employee = emp }));
         }
-        [HttpPut("{id}")]
-        public async Task<IActionResult> EditEmployee(Guid id, Employee emp)
+        [HttpPut]
+        public async Task<IActionResult> EditEmployee( Employee emp)
         {
-            await DeleteEmployees(emp.Id);
-            return HandleResult(await Mediator.Send(new Create.Command { Employee = emp }));
-            // return HandleResult(await Mediator.Send(new Edit.Command { Employee = emp }));
+            
+            return HandleResult(await Mediator.Send(new Edit.Command { Employee = emp }));
         }
 
         [HttpDelete("{id}")]
