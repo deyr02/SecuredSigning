@@ -6,6 +6,7 @@
 
     <title>Secured Signing</title>
     <link rel="stylesheet" type="text/css" href="./style.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <script type='text/javascript'
         src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"></script>
@@ -23,20 +24,17 @@
             Secured Signing Candidate Evolution.
         </header>
 
-        <h2 class="web-activity" data-bind="text:webActivity"></h2>
+        <h2 class="web-activity" data-bind="text: webActivity">sdasdfsad</h2>
 
          <div class="card-section" style="display:none;" data-bind="visible: hasBeenSubmitted">
-            <h3>Thank you for submitting the form!</h3>
-            <p>The data have been saved in our database successfully</p>
+            <h3>Thank you for submitting the form</h3>
+            <p>The data have been saved  successfully.</p>
             <P>Would you like to download the data as PDF?</P>
             <a href="./pdfDownload.html">Click here to download</a>
         </div> 
 
         <div class="card-section" data-bind="visible: !hasBeenSubmitted()">
-            <h2>Create New Employee</h2>
-            <p>Please fill the following information</p>
-
-
+         
 
             <form data-bind="submit: handleSubmit">
 
@@ -52,7 +50,7 @@
                         id="last-name" type="text" />
                 </div>
                 <div class="field">
-                    <label for="full-address">Full Address*
+                    <label for="full-address">Full Address*</label>
                     <input data-bind="value: fullAddress, css: { error: fullAddress.error() && fullAddress.isModified() }"
                         id="full-address" type="text" />
                 </div>
@@ -122,13 +120,16 @@
                         id="emergency-contact-number" type="text" />
                 </div>
                 <h4>Signature</h4>
-                <div class="field">
+                <div class="field checkbox-field">
                     <input data-bind="checked: isSigned, css: { error: isSigned.error() && isSigned.isModified() }"
-                        id="is-signed" type="checkbox" /> <label for="is-signed">Terms and Condition*</label>
+                        id="is-signed" type="checkbox" /> <label for="is-signed">(Terms and Condition)*</label>
+                </div>
+
+                <div class="field submit-field" >
+                     <input type="submit" value="Subbmit">
                 </div>
 
                 
-                <input type="submit" value="Subbmit">
             </form>
         </div>
         <footer>

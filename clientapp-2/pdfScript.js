@@ -19,7 +19,7 @@ function employeeDataViewModel(){
     self.customBind= function(_emplyeeObject){
         self.fullName(_emplyeeObject.firstName +" "+ _emplyeeObject.lastName);
         self.fullAddress(_emplyeeObject.fullAddress);
-        self.maillingAddress(_emplyeeObject.maillingAddress);
+        self.maillingAddress(_emplyeeObject.maillingAdress);
         self.email(_emplyeeObject.email);
         self.phoneNumber(_emplyeeObject.phoneNumber);
         self.citizenshipStatus(_emplyeeObject.citizenshipStatus);
@@ -33,7 +33,7 @@ function employeeDataViewModel(){
     }
 
     self.getEmployeeData = function(){
-        const Id = '7323f6e4-d15d-491a-af58-c6f7926f9930';  //localStorage.getItem("secured_sigining_employee_id");
+        const Id = localStorage.getItem("secured_sigining_employee_id");
         $.ajax({
             url:`https://rdey-secured-signing.herokuapp.com/employee/${Id}`,
             dataType:'json'
@@ -54,6 +54,4 @@ const pdfDownloader = document.querySelector("#knockout-pdf");
     const pdfViewModel = new employeeDataViewModel();
     pdfViewModel.getEmployeeData;
     ko.applyBindings(pdfViewModel, pdfDownloader);
-$(document).ready( function(){
-    
-});
+
