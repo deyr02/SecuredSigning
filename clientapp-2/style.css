@@ -293,7 +293,7 @@ input.error {
 #copiedToPdf {
   width: 595px;
   height: 842px;
-  transform: scale(0.8);
+  transform: scale(1);
   z-index: -1;
   padding: 5px;
   background-color: white;
@@ -370,16 +370,8 @@ input.error {
   #pdf {
     display: none;
   }
-  #copiedToPdf {
-    width: 595px;
-    height: 842px;
-    transform: scale(0.8);
-    z-index: -1;
-    padding: 5px;
-    background-color: white;
-    position: absolute;
-    left: 0;
-  }
+
+
   #copiedToPdf .row {
     display: flex;
     flex-direction: row;

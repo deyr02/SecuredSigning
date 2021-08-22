@@ -5,6 +5,7 @@ using AutoMapper;
 using Domain;
 using FluentValidation;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 namespace Application.Employees
@@ -37,8 +38,14 @@ namespace Application.Employees
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
                 var activity = await _context.Employees.FindAsync(request.Employee.Id);
-
                 if (activity == null) return null;
+
+                var uniqueEmailCheck = await _context.Employees.FirstOrDefaultAsync(x => x.Email == request.Employee.Email);
+
+                if (activity.Email != request.Employee.Email && uniqueEmailCheck != null)
+                {
+                    return Result<Unit>.Failure("The email address is already registered");
+                }
 
                 _mapper.Map(request.Employee, activity);
 

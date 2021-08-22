@@ -92,7 +92,32 @@ export default observer(function EmployeeForm(){
             
                 
             
-                onSubmit = {(values)=> handleFormSubmit(values) }
+                onSubmit = {async (values, actions)=> {
+                    
+                     if (values.id === '') {
+                         values.id = uuid();
+                         await  employeeStore.createEmployee(values)
+                        .then(()=> {
+                          history.push(`/details/${values.id}`);
+                        })
+                         .catch(error=>{
+                            values.id = '';
+                            actions.setErrors({email: error.response.data});
+                            actions.setSubmitting(false);
+                        });
+                    } else {
+                    
+                        await employeeStore.updateEmployee(values)
+                       .then(()=>{ 
+                          history.push(`/details/${values.id}`)
+                         }) 
+                         .catch(error=>{
+                            actions.setErrors({email: error.response.data});
+                            actions.setSubmitting(false);
+                        });
+                    }
+                    
+                }}
             >
                 {({handleSubmit, isValid, isSubmitting, errors, dirty})=>(
 

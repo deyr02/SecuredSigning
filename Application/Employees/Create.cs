@@ -4,6 +4,7 @@ using Application.Core;
 using Domain;
 using FluentValidation;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 namespace Application.Employees
@@ -34,8 +35,15 @@ namespace Application.Employees
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
+                var uniqueEmailCheck = await _context.Employees.FirstOrDefaultAsync(x => x.Email == request.Employee.Email);
+
+                if (uniqueEmailCheck != null)
+                {
+                    return Result<Unit>.Failure("The email address is already registered");
+                }
 
                 _context.Employees.Add(request.Employee);
+
                 var result = await _context.SaveChangesAsync() > 0;
                 if (!result) return Result<Unit>.Failure("Failed to Create new Employee details");
                 return Result<Unit>.Success(Unit.Value);

@@ -109,7 +109,7 @@ export default class EmployeeStroe{
                 this.selectedEmployee = emp;
             })
         } catch (error) {
-            console.log(error);
+            throw error;
         }
     }
      updateEmployee = async (emp:Employee) => {
@@ -120,7 +120,7 @@ export default class EmployeeStroe{
             });
            
         } catch (error) {
-            console.log(error);
+             throw error;
         }
     }
 
