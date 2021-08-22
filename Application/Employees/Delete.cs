@@ -25,11 +25,11 @@ namespace Application.Employees
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
                 var employee = await _dataContext.Employees.FindAsync(request.Id);
-                if(employee == null) return null;
+                // if(employee == null) return null;
 
                 _dataContext.Employees.Remove(employee);
-                var result = await _dataContext.SaveChangesAsync() >0;
-                if(!result) return Result<Unit>.Failure("Faild to delete Employee details");
+                var result = await _dataContext.SaveChangesAsync() > 0;
+                if (!result) return Result<Unit>.Failure("Faild to delete Employee details");
                 return Result<Unit>.Success(Unit.Value);
             }
         }
