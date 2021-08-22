@@ -63,22 +63,22 @@ export default observer(function EmployeeForm(){
          
     }, [employeeStore, id])
 
-    function handleFormSubmit(emp:Employee) {
-        if (emp.id === '') {
-            emp.id = uuid();
-            employeeStore.createEmployee(emp).then(()=> {
-                history.push(`/details/${emp.id}`);
-            });
-        } else {
+    // function handleFormSubmit(emp:Employee) {
+    //     if (emp.id === '') {
+    //         emp.id = uuid();
+    //         employeeStore.createEmployee(emp).then(()=> {
+    //             history.push(`/details/${emp.id}`);
+    //         });
+    //     } else {
         
-           employeeStore.updateEmployee(emp).then(()=>{
+    //        employeeStore.updateEmployee(emp).then(()=>{
             
-            history.push(`/details/${emp.id}`)
+    //         history.push(`/details/${emp.id}`)
             
-            });;
-        }
+    //         });;
+    //     }
        
-    }
+    // }
    
 
     return(

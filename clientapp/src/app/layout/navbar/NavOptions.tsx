@@ -18,6 +18,8 @@ export default function NavOptions({hideMenuOption}:Props){
           
             <List.Item as ={NavLink} to = {'/create'} onClick={reload} >Create Employee</List.Item>
             <List.Item as ={NavLink} to = {'/about'} onClick={hideMenuOption} >About</List.Item>
+            <List.Item as ={NavLink} to = {'/errors'} onClick={hideMenuOption} >Test Errors</List.Item>
+            
         </List>
     )
 }

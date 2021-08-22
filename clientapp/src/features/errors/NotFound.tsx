@@ -1,4 +1,5 @@
-import { Header, Icon, Segment } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { Button, Header, Icon, Segment } from 'semantic-ui-react';
 
 export default function NotFound() {
     
@@ -9,9 +10,9 @@ export default function NotFound() {
                 Oops - we've looked everywhere and could not find this.
             </Header>
             <Segment.Inline>
-                {/* <Button as={Link} to='/list' secondary>
-                    Return to Card List
-                </Button> */}
+                <Button as={Link} to='/employees' secondary>
+                    Return to Employee List
+                </Button>
             </Segment.Inline>
         </Segment>
     )

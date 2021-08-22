@@ -25,7 +25,7 @@ namespace Application.Employees
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
                 var employee = await _dataContext.Employees.FindAsync(request.Id);
-                // if(employee == null) return null;
+                if (employee == null) return null;
 
                 _dataContext.Employees.Remove(employee);
                 var result = await _dataContext.SaveChangesAsync() > 0;
